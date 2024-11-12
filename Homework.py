@@ -11,7 +11,7 @@ def draw():
         blue=random.randint(0,255)
         red=random.randint(0,255)
         green=random.randint(0,255)
-        screen.draw.circle((red,green,blue), (350,350), radius)
+        screen.draw.circle((350,350), radius, (red,green,blue))
         radius-=10
        # screen.draw.circle
 

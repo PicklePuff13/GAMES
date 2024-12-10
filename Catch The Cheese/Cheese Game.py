@@ -5,9 +5,10 @@ HEIGHT=700
 
 Mouse=Actor("mouse.png")
 Cheese=Actor("cheese.png")
+Obsticle=Actor("obsticle.png")
 GameOver=False
 Score=0
-Time=10
+Time=60
 
 Mouse.pos=(525,650)
 
@@ -15,6 +16,7 @@ def draw():
     screen.blit("kitchen floor.jpg", (0,0))
     Mouse.draw()
     Cheese.draw()
+    Obsticle.draw()
     screen.draw.text("Score: " + str(Score), color="black", topleft=(250,50))
     if GameOver==True:
       screen.fill("black")
@@ -23,6 +25,9 @@ def draw():
 def position():
     Cheese.x=random.randint(0,700)
     Cheese.y=random.randint(0,700)
+    Obsticle.x=random.randint(0,700)
+    Obsticle.y=random.randint(0,700)
+
 
 def GameisOver():
     global GameOver
@@ -43,6 +48,10 @@ def update():
     if Mouse.colliderect(Cheese):
           position()
           Score+=1
+
+    if Mouse.colliderect(Obsticle):
+          position()
+          Score-=1
 
 clock.schedule(GameisOver, Time)
 

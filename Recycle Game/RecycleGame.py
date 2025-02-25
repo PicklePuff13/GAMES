@@ -34,9 +34,15 @@ def draw():
     screen.blit("background.jpg",(0,0))
     if GWin==True:
         screen.blit("youwin.jpg",(0,0))
+    elif GOver==True:
+        screen.blit("you loose.jpg",(0,0))
     else:
        for i in Combination:
           i.draw()
+
+def gameover():
+    global GOver
+    GOver=True
 
 def on_mouse_down(pos):
     global Combination, CLevel, GWin
@@ -48,6 +54,7 @@ def on_mouse_down(pos):
                 else:
                     CLevel+=1
                     Combination.clear()
-
+            else: 
+                gameover()
     
 pgzrun.go()

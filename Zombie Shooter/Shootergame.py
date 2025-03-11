@@ -4,6 +4,8 @@ WIDTH=850
 HEIGHT=560
 
 bulletlist=[]
+playerscore=0
+enemyscore=0
 player=Actor("player.png")
 player.pos=(420,530)
 enemy=Actor("zombieenemy.png")
@@ -13,6 +15,7 @@ def draw():
     screen.blit("backround.jpg", (0,0))
     player.draw()
     enemy.draw()
+    screen.draw.text("player's score = "+str(playerscore),(20,20),color="black")
     for i in bulletlist:
       i.draw()
 
@@ -24,6 +27,7 @@ def on_key_down(key):
         bulletlist[-1].y=player.y-30
     
 def update():
+    global playerscore
     enemy.y+=2
     if enemy.y>=560:
         enemy.y=0
@@ -50,5 +54,6 @@ def update():
             bulletlist.remove(i)
             enemy.y=0
             enemy.x=random.randint(20,830)
+            playerscore=playerscore+1
 
 pgzrun.go()
